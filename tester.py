@@ -1,10 +1,14 @@
 import metrics
 import games
+import casinoKeno
 
 # -- Example 1: casino keno pick-3 --
 # setup [probabilities (calculated), and payoffs (based on odds given)]
-probabilities = games.casinoKenoPick(3, showPrintout=False) # ex for specific game
+probabilities = games.casinoKenoPick(3, True) # ex for specific game
 houseNet = [1,0,-1,-15] # based on odds
+
+pr = casinoKeno.probability(3)
+print(pr)
 
 # metric calculations & output (set showPrintout=True or False)
 houseEdge = metrics.houseEdge(probabilities, houseNet, showPrintout=False)
@@ -25,10 +29,10 @@ stdDev = metrics.stdDev(variance, showPrintout=False)
 # s7stdDev = metrics.stdDev(s7Var, showPrintout=True)
 
 
-# bet sum 12 
-sum12 = games.threeDice(sum=12, showPrintout=False)
-ohm = 6**3
-pr12 = [1-(sum12/ohm), sum12/ohm]
-h12 = [1, -6]
-sum12HE = metrics.houseEdge(pr12, h12, showPrintout=True)
+# # bet sum 12 
+# sum12 = games.threeDice(sum=12, showPrintout=False)
+# ohm = 6**3
+# pr12 = [1-(sum12/ohm), sum12/ohm]
+# h12 = [1, -6]
+# sum12HE = metrics.houseEdge(pr12, h12, showPrintout=True)
 

@@ -1,3 +1,4 @@
+# 
 def houseEdge(probabilities, houseNet, showPrintout):
     if (len(houseNet) != len(probabilities)):
         print(f"Check for missing values in input arrays \n Probabilities:{probabilities}, House Net: {houseNet}")

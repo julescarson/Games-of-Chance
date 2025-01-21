@@ -28,6 +28,8 @@ In general..
 import math
 from collections import Counter
 
+#TODO output step calculations fully
+
 # dict for testing - [a,b,c,d,e] as 5 distinct cards = "Lower than a pair"
 handTypes = {
     '[1, 0, 0, 1, 11]': 'four of a kind',
@@ -52,7 +54,7 @@ def factorialList(parsedArray):
 
 # returns subset size for different types of hands
 def numHandsOfType(cardArray, isFlush=False, isStraight=False):
-
+    # TODO
     if (isFlush and isStraight):
         return 0
     elif (isFlush):
@@ -69,41 +71,30 @@ def numHandsOfType(cardArray, isFlush=False, isStraight=False):
     return ans
 
 
-# returns array in form [f4,f3,f2,f1,f0] 
+# returns array in form [f4,f3,f2,f1,f0] : f4 = instances of four of a kind, .., f0 : unseen cards
 def cardsToHandType(cards):
-    # f4: 4 of a kind instances, ... , f0: unseen card instances
     faceValues = [0,0,0,0, 13-len(set(cards))] 
-    hand = Counter(Counter(cards).values()) # "reduced counter" {fi : count}
+    # dict counter each element -> secondary counter, group instances  { 2 : 1 } "1 instance of 2 same face value card" 
+    hand = Counter(Counter(cards).values()) 
     
     # update faceValues array
     for fCount in hand.items():
         faceValues[4-fCount[0]] = fCount[1]  
     return faceValues
 
+# output some metrics for a specific poker hand
 def poker(hand):
+    #TODO: return value, parse by metrics.py functions
     parsedHand = cardsToHandType(hand)
     nameType = handTypes.get((str)(parsedHand))
     numType = numHandsOfType(parsedHand)
     prType = handProbability(numType)
-
     print(f"{hand} -> {parsedHand}, '{nameType}', ways: {numType}, probability: {prType} = {round(prType*100, 4)}%")    
   
-    
-   
 
-
-'''
-
-    '[1, 0, 0, 1, 11]': 'four of a kind',
-    '[0, 1, 1, 0, 11]': 'full house',
-    '[0, 1, 0, 2, 10]': 'three of a kind',
-    '[0, 0, 2, 1, 10]': 'two pair',
-    '[0, 0, 1, 3, 9]': 'one pair',
-    '[0, 0, 0, 5, 8]': 'five distinct cards'
-'''
-h = [[2,2,2,2,4],[3,3,3,2,2],[3,3,3,2,1],[2,2,6,6,3],[1,1,4,3,5],[1,2,3,4,5]]
-
-for e in h:
+#test
+handsWithoutFlushes = [[2,2,2,2,4],[3,3,3,2,2],[3,3,3,2,1],[2,2,6,6,3],[1,1,4,3,5],[1,2,3,4,5]]
+for e in handsWithoutFlushes:
     poker(e)
 
 
