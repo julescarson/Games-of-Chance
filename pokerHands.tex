@@ -1,0 +1,81 @@
+\documentclass{article}
+\usepackage{amsmath}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\topmargin}{-0.5in}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+\begin{document}
+\title{Poker Hand Calculations}
+\maketitle
+
+\section*{Royal Flush}
+The subset size for a Royal Flush is calculated as follows:
+\[
+\text{Subset size} = 4 \quad \text{(1 Royal Flush per suit)}
+\]
+
+
+\section*{Straight Flush}
+The subset size for a Straight Flush is calculated as follows:
+\[
+\text{Subset size} = 9 \times 4 = 36 \quad \text{(9 possible straights per suit, 4 suits)}
+\]
+
+
+\section*{Four of a Kind}
+The subset size for a Four of a Kind is calculated as follows:
+\[
+\text{Subset size} = 13 \times \binom{48}{1} = 624 \quad \text{(13 ranks, 48 options for the 5th card)}
+\]
+
+
+\section*{Full House}
+The subset size for a Full House is calculated as follows:
+\[
+\text{Subset size} = 13 \times \binom{4}{3} \times 12 \times \binom{4}{2} = 3744 \quad \text{(13 ranks for 3-of-a-kind, 12 ranks for pair)}
+\]
+
+
+\section*{Flush}
+The subset size for a Flush is calculated as follows:
+\[
+\text{Subset size} = 4 \times \binom{13}{5} - 36 = 5112 \quad \text{(4 suits, 5 cards from each suit, minus straight flushes)}
+\]
+
+
+\section*{Straight}
+The subset size for a Straight is calculated as follows:
+\[
+\text{Subset size} = 10 \times \binom{4}{1}^5 - 36 = 10204 \quad \text{(10 starting points, suits for each card, minus straight flushes)}
+\]
+
+
+\section*{Three of a Kind}
+The subset size for a Three of a Kind is calculated as follows:
+\[
+\text{Subset size} = 13 \times \binom{4}{3} \times \binom{12}{2} \times \binom{4}{1}^2 = 54912 \quad \text{(13 ranks for trips, suits for 2 cards)}
+\]
+
+
+\section*{Two Pair}
+The subset size for a Two Pair is calculated as follows:
+\[
+\text{Subset size} = \binom{13}{2} \times \binom{4}{2}^2 \times \binom{11}{1} \times \binom{4}{1} = 123552 \quad \text{(13 ranks for 2 pairs, suits for pairs)}
+\]
+
+
+\section*{One Pair}
+The subset size for a One Pair is calculated as follows:
+\[
+\text{Subset size} = 13 \times \binom{4}{2} \times \binom{12}{3} \times \binom{4}{1}^3 = 1098240 \quad \text{(13 ranks for pair, 12 ranks for other 3 cards)}
+\]
+
+
+\section*{High Card}
+The subset size for a High Card is calculated as follows:
+\[
+\text{Subset size} = 2598960 - \left(4 + 36 + 624 + 3744 + 5108 + 10200 + 54912 + 123552 + 1098240\right) = 1302540
+\]
+
+\end{document}

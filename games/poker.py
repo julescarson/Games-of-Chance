@@ -92,9 +92,5 @@ def poker(hand):
     print(f"{hand} -> {parsedHand}, '{nameType}', ways: {numType}, probability: {prType} = {round(prType*100, 4)}%")    
   
 
-#test
-handsWithoutFlushes = [[2,2,2,2,4],[3,3,3,2,2],[3,3,3,2,1],[2,2,6,6,3],[1,1,4,3,5],[1,2,3,4,5]]
-for e in handsWithoutFlushes:
-    poker(e)
 
 
